@@ -7,9 +7,8 @@ d = 3
 
 
 def main():
-    screen = Screen((64, 64))
-
     global theta, t_pos, k, d
+    screen = Screen((64, 64))
 
     def _action():
         global theta, t_pos, k, d
@@ -19,6 +18,7 @@ def main():
         for i in range(0, 8):
             points[i] = (points[i][0] - origin[0], points[i][1] - origin[1], points[i][2] - origin[2])
             points[i] = screen.rotate(points[i], theta, axes="y")
+            points[i] = screen.rotate(points[i], theta, axes="x")
             points[i] = screen.translation(points[i], t_pos)
             # points[i] = screen.zoom(points[i], k)
             points[i] = (points[i][0] + origin[0], points[i][1] + origin[1], points[i][2] + origin[2])
@@ -43,6 +43,9 @@ def main():
         elif t_pos[2] <= -8:
             d = 3
         k *= 1.01
+
+    def _act():
+        screen.draw_point((1, 2, 0))
 
     screen.render(_action)
 

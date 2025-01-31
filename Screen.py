@@ -128,9 +128,9 @@ class Screen:
         for j in range(0, self.size[1]):
             for i in range(0, self.size[0]):
                 if self.pixels[i][j].is_on():
-                    pygame.draw.rect(self.screen, BLACK, (i * 10, j * 10, 10, 10))
+                    pygame.draw.rect(self.screen, BLACK, (i * 10, (self.size[0] - 1 - j) * 10, 10, 10))
                 else:
-                    pygame.draw.rect(self.screen, WHITE, (i * 10, j * 10, 10, 10))
+                    pygame.draw.rect(self.screen, WHITE, (i * 10, (self.size[0] - 1 - j) * 10, 10, 10))
 
     def _clear(self):
         for j in range(0, self.size[1]):
