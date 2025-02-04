@@ -13,12 +13,13 @@ BLACK = (0, 0, 0)
 
 class Screen:
 
-    def __init__(self, size: tuple):
+    def __init__(self, size: tuple, d=64):
+        self.d = d
         self.size = size
         self.pixels: list[list[Pixel]] = [[Pixel((i, j)) for i in range(0, self.size[0])] for j in range(0, self.size[1])]
         self.screen = pygame.display.set_mode((self.size[0] * 10, self.size[1] * 10))
 
-    def render(self, action):
+    def render(self, *args):
         running = True
         self.screen.fill(WHITE)
         while running:
@@ -30,7 +31,9 @@ class Screen:
             self._update()
             pygame.display.flip()
 
-            action()
+            for i in args:
+                i()
+
             self._update()
             pygame.display.flip()
 
@@ -95,16 +98,16 @@ class Screen:
         y = r_y = vec[1]
         z = r_z = vec[2]
         if axes == "z":
-            r_x = int(x * cos(theta) - y * sin(theta))
-            r_y = int(x * sin(theta) + y * cos(theta))
+            r_x = round(x * cos(theta) - y * sin(theta))
+            r_y = round(x * sin(theta) + y * cos(theta))
             return r_x, r_y, r_z
         elif axes == "x":
-            r_y = int(y * cos(theta) - z * sin(theta))
-            r_z = int(y * sin(theta) + z * cos(theta))
+            r_y = round(y * cos(theta) - z * sin(theta))
+            r_z = round(y * sin(theta) + z * cos(theta))
             return r_x, r_y, r_z
         elif axes == "y":
-            r_x = int(x * cos(theta) + z * sin(theta))
-            r_z = int(- x * sin(theta) + z * cos(theta))
+            r_x = round(x * cos(theta) + z * sin(theta))
+            r_z = round(- x * sin(theta) + z * cos(theta))
             return r_x, r_y, r_z
 
     @staticmethod
@@ -115,8 +118,8 @@ class Screen:
     def translation(vec, t_vec):
         return vec[0] + t_vec[0], vec[1] + t_vec[1], vec[2] + t_vec[2]
 
-    @staticmethod
-    def _projection(pos_3d: tuple, d=64) -> tuple:
+    def _projection(self, pos_3d: tuple) -> tuple:
+        d = self.d
         x = pos_3d[0]
         y = pos_3d[1]
         z = pos_3d[2]
