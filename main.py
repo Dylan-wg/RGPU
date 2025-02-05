@@ -5,17 +5,18 @@ d = 3
 
 
 def main():
-    global theta
+    global theta, flag
     screen = Screen((64, 64))
 
     def _action():
         global theta
+        print(theta)
         points = [(16, 16, 16), (16, 16, -16), (48, 16, 16), (48, 16, -16),
                   (16, 48, 16), (16, 48, -16), (48, 48, 16), (48, 48, -16)]
         origin = (32, 32, 0)
         for i in range(0, 8):
             points[i] = (points[i][0] - origin[0], points[i][1] - origin[1], points[i][2] - origin[2])
-            points[i] = screen.rotate(points[i], theta, axes="y")
+            # points[i] = screen.rotate(points[i], theta, axes="y")
             points[i] = screen.rotate(points[i], theta, axes="x")
             points[i] = (points[i][0] + origin[0], points[i][1] + origin[1], points[i][2] + origin[2])
         lines = [[points[0], points[1]],
@@ -33,9 +34,8 @@ def main():
         for line in lines:
             screen.draw_line(line[0], line[1])
         theta += 5
-
-    def _act():
-        screen.draw_point((1, 2, 0))
+        if theta >= 360:
+            theta = 0
 
     screen.render(_action)
 
