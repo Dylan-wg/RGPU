@@ -32,7 +32,7 @@ def get_trig_bin(trig, degree):
 
 def get_schem(start, end, trig, file):
     schem = MCSchematic()
-    pos = [[0, i, 0] for i in range(0, -15, -2)]
+    pos = [[0, i - 1, 0] for i in range(0, -15, -2)]
     for degree in range(start, end + 1):
         binary: list = get_trig_bin(trig, degree)
         print(degree, binary)
@@ -49,12 +49,12 @@ def get_schem(start, end, trig, file):
 def error_analysis():
     for i in range(360):
         try:
-            print(abs(sin(i) - math.sin(radians(i))) / math.sin(radians(i)))
+            print(abs(sin(i) - math.sin(radians(i))) / abs(math.sin(radians(i))))
             print("-------------------------------------------------------")
             print(i, sin(i), math.sin(radians(i)))
             print("-------------------------------------------------------")
             print(abs(sin(i) - math.sin(radians(i))))
-            print("-------------------------------------------------------")
+            print("=======================================================")
             print(abs(cos(i) - math.cos(radians(i))) / math.cos(radians(i)))
             print("-------------------------------------------------------")
             print(i, cos(i), math.cos(radians(i)))
@@ -66,7 +66,7 @@ def error_analysis():
 
 
 def main():
-    get_schem(0, 44, sin, "sin_0_44")
+    print(get_trig_bin(sin, 91))
     # error_analysis()
 
 
