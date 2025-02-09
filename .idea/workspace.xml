@@ -25,7 +25,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/OKC/projects/codes/PythonProjects/RGPU/main.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/OKC/projects/codes/PythonProjects/RGPU&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
@@ -34,7 +34,7 @@
       <recent name="D:\OKC\projects\codes\PythonProjects\RGPU" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.trig_generator">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="RGPU" />
       <option name="INTERPRETER_OPTIONS" value="" />

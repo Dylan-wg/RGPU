@@ -2,6 +2,7 @@ import math
 from math import radians
 import mcschematic
 from mcschematic import MCSchematic
+from Screen import *
 
 
 def sin(degree):
@@ -66,7 +67,7 @@ def error_analysis():
 
 
 def main():
-    print(get_trig_bin(sin, 91))
+    get_schem(0, 44, sin, "sin_0_44")
     # error_analysis()
 
 

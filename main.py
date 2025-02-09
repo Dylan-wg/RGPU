@@ -1,4 +1,5 @@
 from Screen import Screen
+from vector_calc import *
 
 theta = 0
 d = 3
@@ -10,14 +11,14 @@ def main():
 
     def _action():
         global theta
-        print(theta)
+        # print(theta)
         points = [(16, 16, 16), (16, 16, -16), (48, 16, 16), (48, 16, -16),
                   (16, 48, 16), (16, 48, -16), (48, 48, 16), (48, 48, -16)]
         origin = (32, 32, 0)
         for i in range(0, 8):
             points[i] = (points[i][0] - origin[0], points[i][1] - origin[1], points[i][2] - origin[2])
-            # points[i] = screen.rotate(points[i], theta, axes="y")
-            points[i] = screen.rotate(points[i], theta, axes="x")
+            points[i] = rotate(points[i], theta, axes="y")
+            points[i] = rotate(points[i], theta, axes="x")
             points[i] = (points[i][0] + origin[0], points[i][1] + origin[1], points[i][2] + origin[2])
         lines = [[points[0], points[1]],
                  [points[2], points[3]],
@@ -36,7 +37,6 @@ def main():
         theta += 5
         if theta >= 360:
             theta = 0
-
     screen.render(_action)
 
 
