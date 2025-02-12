@@ -20,9 +20,17 @@ def rotate(vec, theta=0, axes="z") -> tuple:
         return r_x, r_y, r_z
 
 
-def zoom(vec, k: int) -> tuple:
-    return int(vec[0] * k), int(vec[1] * k), int(vec[2] * k)
+def zoom(vec, *args) -> tuple:
+    temp = list(vec)
+    for i in args:
+        for j in range(3):
+            temp[j] *= i
+    return tuple(temp)
 
 
-def translation(vec, t_vec):
-    return vec[0] + t_vec[0], vec[1] + t_vec[1], vec[2] + t_vec[2]
+def translation(*args: tuple):
+    temp = [0, 0, 0]
+    for i in args:
+        for j in range(3):
+            temp[j] += i[j]
+    return temp
