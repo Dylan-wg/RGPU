@@ -2,7 +2,6 @@ import math
 from math import radians
 import mcschematic
 from mcschematic import MCSchematic
-from Screen import *
 
 
 def sin(degree):
